@@ -82,7 +82,7 @@ jobs:
         run: |
           make -j$(nproc) V=s || make -j1 V=s
 
-      -       - name: List build output
+      - name: List build output
         run: |
           echo "===== OpenWrt target output ====="
           find openwrt/bin/targets -maxdepth 3 -type f -print
