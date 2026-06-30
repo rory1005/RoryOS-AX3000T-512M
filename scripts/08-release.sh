@@ -10,10 +10,7 @@
 #     固件发布信息模块。
 #
 # 当前功能：
-#     ① 固件版本
-#     ② 编译时间
-#     ③ 作者信息
-#     ④ Banner 信息
+#     ① 检查 RoryOS Banner 是否存在
 #
 # 作者：
 #     Rory
@@ -32,8 +29,13 @@ set -e
 
 OPENWRT_DIR="${1:-openwrt}"
 
-echo "【发布】开始..."
+echo "【发布】开始检查发布信息..."
 
-# 后续发布信息将在这里添加
+if [ -f "$OPENWRT_DIR/files/etc/banner" ]; then
+  echo "【发布】RoryOS Banner 已找到：$OPENWRT_DIR/files/etc/banner"
+else
+  echo "错误：未找到 RoryOS Banner"
+  exit 1
+fi
 
 echo "【发布】完成。"
