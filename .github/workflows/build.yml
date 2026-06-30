@@ -102,10 +102,12 @@ jobs:
       - name: List build output
         run: |
           echo "===== OpenWrt target output ====="
-          find openwrt/bin/targets -maxdepth 3 -type f -print
-          echo "===== File sizes ====="
-          du -ah openwrt/bin/targets | sort -h | tail -50
-
+          if [ -d openwrt/bin/targets ]; then
+              find openwrt/bin/targets
+          else
+              echo "No firmware generated (test-only mode)."
+          fi
+          
       - name: Upload full target output
         if: ${{ github.event.inputs.build_mode == 'build' }}
         uses: actions/upload-artifact@v4
