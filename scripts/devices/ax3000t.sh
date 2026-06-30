@@ -35,7 +35,14 @@ echo "【设备：AX3000T】修改 UBI 分区为 512MB NAND 布局..."
 
 sed -i "s/reg = <0x600000 0x7000000>;/reg = <0x600000 0x1f9c0000>;/g" "$DTS_FILE"
 
-echo "【设备：AX3000T】检查修改结果："
-grep -n "ubi\|0x1f9c0000\|0x7000000" "$DTS_FILE" || true
+if grep -q "0x1f9c0000" "$DTS_FILE"; then
+  echo "【设备：AX3000T】512MB UBI 分区修改成功。"
+else
+  echo "错误：512MB UBI 分区修改失败。"
+  exit 1
+fi
+
+echo "【设备：AX3000T】检查 DTS 中的 NAND / Wi-Fi / 分区信息..."
+grep -n "spi-nand\|nand\|ubi\|partition\|wifi\|wmac\|factory" "$DTS_FILE" || true
 
 echo "【设备：AX3000T】完成。"
