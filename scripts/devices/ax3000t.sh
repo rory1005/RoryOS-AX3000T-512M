@@ -7,20 +7,35 @@
 #     scripts/devices/ax3000t.sh
 #
 # 文件作用：
-#     Xiaomi AX3000T 专属配置
+#     Xiaomi AX3000T 专属配置。
 #
 # 当前功能：
 #     ① 自动查找 AX3000T DTS
-#     ② 输出 DTS 路径
-#
+#     ② 修改 512MB NAND UBI 分区
 ###############################################################################
 
 set -e
 
 OPENWRT_DIR="${1:-openwrt}"
 
-echo "【AX3000T】开始检查设备源码..."
+echo "【设备：AX3000T】开始..."
 
-find "$OPENWRT_DIR" -type f | grep "ax3000t"
+DTS_FILE="$(find "$OPENWRT_DIR/target/linux/mediatek/dts" -type f -name '*ax3000t*.dts' | head -n 1)"
 
-echo "【AX3000T】检查完成。"
+if [ -z "$DTS_FILE" ]; then
+  echo "错误：未找到 AX3000T DTS 文件"
+  exit 1
+fi
+
+echo "【设备：AX3000T】DTS 文件：$DTS_FILE"
+
+cp "$DTS_FILE" "$DTS_FILE.bak"
+
+echo "【设备：AX3000T】修改 UBI 分区为 512MB NAND 布局..."
+
+sed -i "s/reg = <0x600000 0x7000000>;/reg = <0x600000 0x1f9c0000>;/g" "$DTS_FILE"
+
+echo "【设备：AX3000T】检查修改结果："
+grep -n "ubi\|0x1f9c0000\|0x7000000" "$DTS_FILE" || true
+
+echo "【设备：AX3000T】完成。"
