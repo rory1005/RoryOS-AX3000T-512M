@@ -1,5 +1,83 @@
-# RoryOS AX3000T 512M
+# RoryOS
 
-Custom OpenWrt firmware for Xiaomi AX3000T V1 (512MB NAND)
+> 一个基于 OpenWrt 的个人学习与定制项目。
 
-Author: Rory
+RoryOS 目前以 **Xiaomi AX3000T V1** 为开发平台，
+采用 **GitHub Actions** 自动编译，并逐步构建模块化开发框架。
+
+本项目仍处于早期开发阶段，功能和目录结构会随着开发持续完善。
+
+---
+
+## 当前状态
+
+**当前版本：** RoryOS 0.1 Alpha
+
+目前已完成：
+
+- GitHub Actions 自动编译
+- Test-Only 开发模式
+- 模块化脚本框架
+- 自定义编译流程
+
+正在开发：
+
+- 系统基础设置
+- 管理界面美化
+- 软件包管理
+- 无线网络配置
+- AX3000T 专属优化
+
+---
+
+## 当前支持设备
+
+| 品牌 | 型号 | 状态 |
+|------|------|------|
+| Xiaomi | AX3000T V1 | 🚧 开发中 |
+
+随着项目推进，将逐步支持更多设备。
+
+---
+
+## 项目目录
+
+```text
+RoryOS
+├── .github/        GitHub Actions 工作流
+├── docs/           项目文档
+├── files/          OpenWrt 覆盖文件
+├── patches/        补丁文件
+├── scripts/        模块化脚本
+└── README.md
+```
+
+---
+
+## 开发原则
+
+RoryOS 坚持以下原则：
+
+- 稳定优先
+- 模块化开发
+- 中文文档
+- 易于维护
+- 持续优化
+
+---
+
+## 特别感谢
+
+RoryOS 基于 OpenWrt 开发。
+
+感谢 OpenWrt 社区以及所有开源项目开发者的贡献。
+
+本项目遵循上游项目的开源协议，并尊重所有开发者的劳动成果。
+
+---
+
+## 作者
+
+**Rory**
+
+技术支持：**福贵（ChatGPT）**
