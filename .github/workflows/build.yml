@@ -1,4 +1,4 @@
-name: Build RoryOS
+name: Build RoryOS AX3000T 512M
 on:
   workflow_dispatch:
     inputs:
@@ -99,5 +99,5 @@ jobs:
         if: ${{ github.event.inputs.build_mode == 'build' }}
         uses: actions/upload-artifact@v4
         with:
-          name: roryos-full-output
+          name: roryos-AX3000T-full-512M-output
           path: openwrt/bin/targets/
