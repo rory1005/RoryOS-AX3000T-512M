@@ -39,6 +39,10 @@ cat >> "$OPENWRT_DIR/.config" <<'EOF'
 # RoryOS 基础软件包
 CONFIG_PACKAGE_luci=y
 CONFIG_PACKAGE_luci-ssl=y
+ONFIG_PACKAGE_luci-base=y
+CONFIG_PACKAGE_luci-mod-admin-full=y
+CONFIG_PACKAGE_luci-compat=y
+CONFIG_PACKAGE_rpcd-mod-luci=y
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
