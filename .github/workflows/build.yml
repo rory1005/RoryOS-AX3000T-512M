@@ -72,6 +72,8 @@ jobs:
           # CONFIG_KERNEL_IR_IMON_DECODER is not set
           EOF
 
+          bash ../scripts/03-packages.sh .
+
           make defconfig
 
       - name: Download sources
